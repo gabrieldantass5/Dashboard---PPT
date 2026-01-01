@@ -42,6 +42,27 @@ O **SSP-DF Strategic Dashboard** é uma plataforma centralizada de inteligência
 ## 2. Application Architecture Document (AAD)
 
 ### 2.1 Visão Geral da Arquitetura
+
+```mermaid
+graph TD
+    User["Gestor SSP"] -->|Acessa| UI["Interface Web (React)"]
+    UI -->|Visualiza| Overview["Dashboard Geral"]
+    UI -->|Gerencia| Alloc["Módulo de Alocação"]
+    UI -->|Analisa| Skills["Módulo de Competências"]
+    
+    subgraph "Core Application"
+        Overview
+        Alloc
+        Skills
+        State["Gerenciamento de Estado"]
+    end
+    
+    subgraph "Data Layer (Simulated)"
+        State -->|Consome| MockData["Constants / JSON"]
+        MockData -.->|Futuro| API["API REST/GraphQL"]
+    end
+```
+
 O sistema é construído como uma **Single Page Application (SPA)** moderna, focada em performance e experiência do usuário ágil. Atualmente opera em modo *client-side* com dados mockados para prototipação de alta fidelidade, preparada para integração futura com APIs REST/GraphQL.
 
 ### 2.2 Tech Stack

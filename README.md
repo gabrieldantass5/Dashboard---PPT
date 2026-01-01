@@ -29,25 +29,25 @@ O projeto utiliza uma arquitetura moderna baseada em **Single Page Application (
 *   **Visualização de Dados:** Recharts
 *   **Ícones:** Lucide React
 
-## 🏗️ Arquitetura do Sistema
+## 🧱 Arquitetura do Sistema
 
 ```mermaid
 graph TD
-    User[Gestor SSP] -->|Acessa| UI[Interface Web (React)]
-    UI -->|Visualiza| Overview[Dashboard Geral]
-    UI -->|Gerencia| Alloc[Módulo de Alocação]
-    UI -->|Analisa| Skills[Módulo de Competências]
+    User["Gestor SSP"] -->|Acessa| UI["Interface Web (React)"]
+    UI -->|Visualiza| Overview["Dashboard Geral"]
+    UI -->|Gerencia| Alloc["Módulo de Alocação"]
+    UI -->|Analisa| Skills["Módulo de Competências"]
     
     subgraph "Core Application"
         Overview
         Alloc
         Skills
-        State[Gerenciamento de Estado]
+        State["Gerenciamento de Estado"]
     end
     
     subgraph "Data Layer (Simulated)"
-        State -->|Consome| MockData[Constants / JSON]
-        MockData -.->|Futuro| API[API REST/GraphQL]
+        State -->|Consome| MockData["Constants / JSON"]
+        MockData -.->|Futuro| API["API REST/GraphQL"]
     end
 ```
 
