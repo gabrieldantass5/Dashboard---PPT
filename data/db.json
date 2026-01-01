@@ -1,0 +1,176 @@
+{
+    "lastUpdate": "2026-01-01T11:10:00Z",
+    "kpis": {
+        "totalForce": 11721,
+        "coverage": 65,
+        "skillCoverage": 45,
+        "nextYearRetirement": 850
+    },
+    "allocationData": [
+        {
+            "name": "Plano Piloto",
+            "efetivoReal": 1200,
+            "efetivoIdeal": 1150,
+            "crimesViolentos": 12
+        },
+        {
+            "name": "Ceilândia",
+            "efetivoReal": 850,
+            "efetivoIdeal": 1400,
+            "crimesViolentos": 88
+        },
+        {
+            "name": "Taguatinga",
+            "efetivoReal": 600,
+            "efetivoIdeal": 750,
+            "crimesViolentos": 45
+        },
+        {
+            "name": "Samambaia",
+            "efetivoReal": 450,
+            "efetivoIdeal": 700,
+            "crimesViolentos": 52
+        },
+        {
+            "name": "Gama",
+            "efetivoReal": 400,
+            "efetivoIdeal": 550,
+            "crimesViolentos": 38
+        },
+        {
+            "name": "Guará",
+            "efetivoReal": 350,
+            "efetivoIdeal": 400,
+            "crimesViolentos": 22
+        },
+        {
+            "name": "Santa Maria",
+            "efetivoReal": 380,
+            "efetivoIdeal": 600,
+            "crimesViolentos": 55
+        },
+        {
+            "name": "Águas Claras",
+            "efetivoReal": 250,
+            "efetivoIdeal": 320,
+            "crimesViolentos": 18
+        },
+        {
+            "name": "Riacho Fundo I/II",
+            "efetivoReal": 280,
+            "efetivoIdeal": 450,
+            "crimesViolentos": 42
+        },
+        {
+            "name": "Sobradinho I/II",
+            "efetivoReal": 320,
+            "efetivoIdeal": 500,
+            "crimesViolentos": 35
+        }
+    ],
+    "competencyData": [
+        {
+            "skill": "Investigação Digital",
+            "available": 45,
+            "required": 100,
+            "gap": 55
+        },
+        {
+            "skill": "Cibersegurança",
+            "available": 30,
+            "required": 90,
+            "gap": 60
+        },
+        {
+            "skill": "Inteligência Estratégica",
+            "available": 60,
+            "required": 80,
+            "gap": 20
+        },
+        {
+            "skill": "Gestão de Crises",
+            "available": 75,
+            "required": 85,
+            "gap": 10
+        },
+        {
+            "skill": "Análise de Dados (BI)",
+            "available": 40,
+            "required": 95,
+            "gap": 55
+        },
+        {
+            "skill": "Operações Especiais",
+            "available": 85,
+            "required": 90,
+            "gap": 5
+        }
+    ],
+    "retirementData": [
+        {
+            "year": "2024",
+            "projection": 520
+        },
+        {
+            "year": "2025",
+            "projection": 680
+        },
+        {
+            "year": "2026",
+            "projection": 850
+        },
+        {
+            "year": "2027",
+            "projection": 1100
+        },
+        {
+            "year": "2028",
+            "projection": 950
+        },
+        {
+            "year": "2029",
+            "projection": 1200
+        },
+        {
+            "year": "2030",
+            "projection": 1450
+        }
+    ],
+    "syncStatus": [
+        {
+            "sys": "Portal Transparência (API)",
+            "status": "Ativo",
+            "color": "bg-emerald-500",
+            "time": "12 min",
+            "icon": "⚡"
+        },
+        {
+            "sys": "Sinesp (Dados Nacionais)",
+            "status": "Ativo",
+            "color": "bg-emerald-500",
+            "time": "2h",
+            "icon": "🌍"
+        },
+        {
+            "sys": "SIGRH (GDF)",
+            "status": "Sync",
+            "color": "bg-blue-500",
+            "time": "82%",
+            "icon": "⚙️"
+        },
+        {
+            "sys": "PCDF (Estatística)",
+            "status": "Ativo",
+            "color": "bg-emerald-500",
+            "time": "15 min",
+            "icon": "🔍"
+        },
+        {
+            "sys": "PMDF (Almanaque)",
+            "status": "Ativo",
+            "color": "bg-emerald-500",
+            "time": "45 min",
+            "icon": "🛡️"
+        }
+    ]
+}

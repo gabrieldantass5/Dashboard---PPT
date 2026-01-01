@@ -1,28 +1,37 @@
-import React, { useMemo } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Users, Target, TrendingUp, AlertTriangle, Database } from 'lucide-react';
 import { KPICard } from '../components/KPICard';
-import { retirementData, allocationData, competencyData } from '../constants';
+import { fetchDashboardData } from '../services/api';
 import { AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
 
 export const DashboardOverview: React.FC = () => {
-  // Cálculos dinâmicos baseados nos dados "Reais" (Mock)
-  const stats = useMemo(() => {
-    const totalEfetivoReal = allocationData.reduce((acc, curr) => acc + curr.efetivoReal, 0);
-    const totalEfetivoIdeal = allocationData.reduce((acc, curr) => acc + curr.efetivoIdeal, 0);
-    const coverage = Math.round((totalEfetivoReal / totalEfetivoIdeal) * 100);
+  const [data, setData] = useState<any>(null);
+  const [loading, setLoading] = useState(true);
 
-    // Simula efetivo total incluindo administrativo não mapeado nas regiões (aprox +15%)
-    const totalForce = Math.round(totalEfetivoReal * 1.15);
-
-    const nextYearRetirement = retirementData.find(d => d.year === 2025)?.projection || 0;
-
-    // Cálculo de Capacitação (Simulado com base nos Gaps)
-    const totalRequiredSkills = competencyData.reduce((acc, curr) => acc + curr.required, 0);
-    const totalAvailableSkills = competencyData.reduce((acc, curr) => acc + curr.available, 0);
-    const skillCoverage = Math.round((totalAvailableSkills / totalRequiredSkills) * 100);
-
-    return { totalForce, coverage, nextYearRetirement, skillCoverage };
+  useEffect(() => {
+    fetchDashboardData()
+      .then(db => {
+        setData(db);
+        setLoading(false);
+      })
+      .catch(err => {
+        console.error(err);
+        setLoading(false);
+      });
   }, []);
+
+  if (loading || !data) {
+    return (
+      <div className="flex items-center justify-center h-96">
+        <div className="flex flex-col items-center gap-4">
+          <div className="w-12 h-12 border-4 border-blue-500 border-t-transparent rounded-full animate-spin"></div>
+          <p className="text-slate-500 font-bold animate-pulse">Sincronizando Inteligência de Dados...</p>
+        </div>
+      </div>
+    );
+  }
+
+  const { kpis: stats, retirementData, syncStatus } = data;
 
   return (
     <div className="space-y-8 animate-fade-in max-w-[1600px] mx-auto pb-12">
@@ -36,11 +45,27 @@ export const DashboardOverview: React.FC = () => {
             <h4 className="text-sm font-black text-slate-800 tracking-tight">Cérebro de Dados Integrado (SSP-DF)</h4>
             <p className="text-xs text-slate-500 mt-1 font-medium">
               Consolidação inteligente via Portal Transparência, Anuário de Segurança e SIGRH.
-              Sincronizado há 14 minutos.
+              Atualizado em: <span className="text-blue-600 font-bold">{new Date(data.lastUpdate).toLocaleString('pt-BR')}</span>
             </p>
           </div>
         </div>
-        <div className="hidden md:flex gap-3 relative z-10">
+        <div className="hidden md:flex gap-3 relative z-10 items-center">
+          <button
+            onClick={() => {
+              setLoading(true);
+              setTimeout(() => {
+                fetchDashboardData().then(db => {
+                  setData(db);
+                  setLoading(false);
+                });
+              }, 1000);
+            }}
+            className="px-4 py-2 bg-blue-600 text-white rounded-xl text-[10px] font-black uppercase tracking-widest hover:bg-blue-700 transition-all shadow-lg shadow-blue-500/20 active:scale-95 flex items-center gap-2"
+          >
+            <Database className="w-3 h-3" />
+            Sincronizar Agora
+          </button>
+          <div className="w-px h-6 bg-blue-100 mx-2"></div>
           <span className="px-3 py-1 bg-white border border-blue-100 rounded-full text-[10px] font-bold text-blue-600 shadow-sm uppercase tracking-wider">Node: Brasília-DF</span>
           <span className="px-3 py-1 bg-emerald-50 border border-emerald-100 rounded-full text-[10px] font-bold text-emerald-600 shadow-sm uppercase tracking-wider flex items-center gap-1.5">
             <span className="w-1.5 h-1.5 bg-emerald-500 rounded-full animate-pulse"></span>

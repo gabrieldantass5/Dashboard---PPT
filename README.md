@@ -1,68 +1,56 @@
-# SSP-DF Strategic Dashboard
+# 📊 Dashboard Estratégico SSP-DF - Inteligência de Dados
 
-![Project Overview](assets/project-overview.svg)
+O **SSP-DF Strategic Dashboard** é uma plataforma de inteligência desenvolvida para a **Secretaria de Segurança Pública do Distrito Federal**. O sistema centraliza indicadores institucionais reais, permitindo o monitoramento estratégico do efetivo, alocação de recursos e gestão de competências das forças (PMDF, PCDF, CBMDF e DETRAN-DF).
 
-## 📋 Sobre o Projeto
+> [!IMPORTANT]
+> **Dados Reais 2024/2025:** O dashboard agora reflete estatísticas oficiais, incluindo a menor taxa de homicídios em 48 anos no DF (6.8/100k hab) e mapeamento real de déficits operacionais.
 
-O **SSP-DF Strategic Dashboard** é uma plataforma de inteligência de dados desenvolvida para a **Secretaria de Segurança Pública do Distrito Federal**. O sistema centraliza indicadores estratégicos, permitindo o monitoramento em tempo real do efetivo, alocação de recursos e gestão de competências das forças de segurança (PMDF, PCDF, CBMDF e DETRAN-DF).
-
-Este projeto foi documentado e estruturado seguindo a metodologia **BMAD (Breakthrough Method for Agile AI-Driven Development)**, garantindo uma arquitetura escalável e focada nas necessidades do usuário final (Gestor Estratégico).
-
-> **Acesse a Documentação Completa:** [BMAD_DOCUMENTATION.md](./BMAD_DOCUMENTATION.md)
+---
 
 ## 🚀 Funcionalidades Principais
 
-*   **Visão Geral Estratégica:** KPIs em tempo real sobre Efetivo Total, Cobertura Regional e Previsão de Aposentadorias.
-*   **Alocação Inteligente:** Mapa de calor e tabelas comparativas de Efetivo Real vs. Ideal por Região Administrativa.
-*   **Gestão de Competências:** Análise de gaps de habilidades (ex: Cibercrimes, Operações Especiais) para direcionamento de cursos.
-*   **Projeção de Vacância:** Gráficos preditivos para antecipação de aposentadorias e planejamento de concursos.
-*   **Interface Moderna:** UX focada em clareza, com modo escuro/claro e design responsivo.
+*   **Visão Geral Estratégica:** KPIs dinâmicos de Efetivo Total, Cobertura Regional e Gaps de Especialização.
+*   **Alocação Inteligente:** Correlação em tempo real entre Efetivo Real vs. Mancha Criminal (CVLI) por RA.
+*   **Gestão de Competências (CHA):** Radar de prioridades para treinamento e identificação de lacunas técnicas (ex: Cibersegurança).
+*   **Sincronização Dinâmica:** Mecanismo de atualização via Portal de Dados Abertos e Transparência do DF.
 
-## 🛠️ Stack Tecnológica
+---
 
-O projeto utiliza uma arquitetura moderna baseada em **Single Page Application (SPA)**:
+## 🧱 Arquitetura e Fluxo de Dados
 
-*   **Frontend:** React 18
-*   **Linguagem:** TypeScript
-*   **Build Tool:** Vite
-*   **Estilização:** Tailwind CSS
-*   **Visualização de Dados:** Recharts
-*   **Ícones:** Lucide React
-
-## 🧱 Arquitetura do Sistema
+O projeto utiliza uma arquitetura focada em persistência e inteligência de dados:
 
 ```mermaid
 graph TD
-    User["Gestor SSP"] -->|Acessa| UI["Interface Web (React)"]
-    UI -->|Visualiza| Overview["Dashboard Geral"]
-    UI -->|Gerencia| Alloc["Módulo de Alocação"]
-    UI -->|Analisa| Skills["Módulo de Competências"]
+    Gov[Fontes Oficiais: Transparência/Dados Abertos] -->|Script ETL| Sync[scripts/sync_data.ts]
+    Sync -->|Normalização| DB[(data/db.json)]
+    DB -->|Fetch Assíncrono| Service[services/api.ts]
+    Service -->|State Management| UI[Interface Dashboard]
+    UI -->|Visualização| User[Gestor Estratégico]
     
-    subgraph "Core Application"
-        Overview
-        Alloc
-        Skills
-        State["Gerenciamento de Estado"]
-    end
-    
-    subgraph "Data Layer (Simulated)"
-        State -->|Consome| MockData["Constants / JSON"]
-        MockData -.->|Futuro| API["API REST/GraphQL"]
+    subgraph "Camada de Inteligência"
+        Sync
+        DB
     end
 ```
 
-## 📦 Instalação e Execução
+---
 
-### Pré-requisitos
-*   Node.js (versão 18 ou superior)
-*   npm ou yarn
+## 🛠️ Stack Tecnológica
 
-### Passo a Passo
+*   **Frontend:** React 18 + Vite (SPA)
+*   **Styling:** Tailwind CSS (Glassmorphism & Premium Design)
+*   **Banco de Dados:** JSON-DB (Persistência Centralizada)
+*   **Visualização:** Recharts (Gráficos de Alta Fidelidade)
+*   **Ícones:** Lucide React
+
+---
+
+## ⚙️ Instalação e Execução
 
 1.  **Clone o repositório:**
     ```bash
     git clone https://github.com/gabrieldantass5/Dashboard---PPT.git
-    cd Dashboard---PPT
     ```
 
 2.  **Instale as dependências:**
@@ -70,21 +58,12 @@ graph TD
     npm install
     ```
 
-3.  **Execute o projeto em modo de desenvolvimento:**
+3.  **Execute o projeto:**
     ```bash
     npm run dev
     ```
 
-4.  **Acesse no navegador:**
-    O sistema estará disponível em `http://localhost:5173` (ou porta similar indicada no terminal).
-
-## 🤝 Contribuição
-
-1.  Faça um Fork do projeto.
-2.  Crie uma Branch para sua Feature (`git checkout -b feature/NovaFeature`).
-3.  Faça o Commit (`git commit -m 'Add: Nova Feature'`).
-4.  Faça o Push (`git push origin feature/NovaFeature`).
-5.  Abra um Pull Request.
+4.  **Sincronização de Dados:** Para atualizar a base com os dados mais recentes, utilize o botão **"Sincronizar Agora"** no cabeçalho do Dashboard.
 
 ---
-*Projeto desenvolvido com foco em inovação e eficiência para a Segurança Pública.*
+*Projeto desenvolvido seguindo a metodologia **BMAD** para excelência em soluções orientadas por IA.*

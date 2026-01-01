@@ -1,10 +1,32 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, ComposedChart, Line } from 'recharts';
 import { Map, ArrowDownUp } from 'lucide-react';
-import { allocationData } from '../constants';
+import { fetchDashboardData } from '../services/api';
 
 export const Allocation: React.FC = () => {
+  const [data, setData] = useState<any>(null);
+  const [loading, setLoading] = useState(true);
   const [sortBy, setSortBy] = useState<'name' | 'deficit' | 'crime'>('crime');
+
+  useEffect(() => {
+    fetchDashboardData().then(db => {
+      setData(db);
+      setLoading(false);
+    }).catch(err => {
+      console.error(err);
+      setLoading(false);
+    });
+  }, []);
+
+  if (loading || !data) {
+    return (
+      <div className="flex items-center justify-center h-96">
+        <div className="w-8 h-8 border-4 border-blue-500 border-t-transparent rounded-full animate-spin"></div>
+      </div>
+    );
+  }
+
+  const { allocationData } = data;
 
   const sortedData = [...allocationData].sort((a, b) => {
     if (sortBy === 'name') return a.name.localeCompare(b.name);
