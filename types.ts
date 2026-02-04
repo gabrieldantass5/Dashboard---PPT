@@ -26,7 +26,7 @@ export interface CompetencyGap {
 }
 
 export interface RetirementData {
-  year: number;
+  year: string | number;
   projection: number;
 }
 
