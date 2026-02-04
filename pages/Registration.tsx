@@ -1,157 +1,144 @@
 import React, { useState } from 'react';
-import { Save, User, Briefcase, MapPin, Award } from 'lucide-react';
-import { FORCES, REGIONS } from '../constants';
-import { PersonnelForm } from '../types';
+import { UserPlus, Save, AlertCircle } from 'lucide-react';
 
-export const Registration: React.FC = () => {
-  const [formData, setFormData] = useState<PersonnelForm>({
-    name: '',
-    force: 'PMDF',
-    rank: '',
-    region: '',
-    specialization: ''
-  });
+const Registration: React.FC = () => {
+    const [formData, setFormData] = useState({
+        name: '',
+        matricula: '',
+        cargo: '',
+        lotacao: '',
+        competencias: ''
+    });
 
-  const [message, setMessage] = useState<string | null>(null);
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
-    const { name, value } = e.target;
-    
-    if (name === 'force' && value === 'DETRAN-DF') {
-        setFormData(prev => ({
-            ...prev,
-            force: value as any,
-            rank: 'Agente de Trânsito'
-        }));
-    } else {
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
+        const { name, value } = e.target;
         setFormData(prev => ({ ...prev, [name]: value }));
-    }
-  };
+    };
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    // Simulate API call
-    console.log("Submitting:", formData);
-    setMessage("Cadastro realizado com sucesso! Os dados foram integrados ao Data Warehouse.");
-    setTimeout(() => setMessage(null), 5000);
-    setFormData({ name: '', force: 'PMDF', rank: '', region: '', specialization: '' });
-  };
+    const handleSubmit = (e: React.FormEvent) => {
+        e.preventDefault();
 
-  const isRankDisabled = formData.force === 'DETRAN-DF';
+        // Simulação de validação
+        // Feedback de sucesso
+        alert("Servidor cadastrado com sucesso!");
 
-  return (
-    <div className="max-w-4xl mx-auto animate-fade-in">
-        <div className="mb-8">
-            <h2 className="text-2xl font-bold text-slate-800">Cadastro de Servidor / Competência</h2>
-            <p className="text-slate-500">Insira novos dados manuais caso a integração automática não esteja disponível.</p>
-        </div>
+        // Limpar formulário
+        setFormData({
+            name: '',
+            matricula: '',
+            cargo: '',
+            lotacao: '',
+            competencias: ''
+        });
+    };
 
-        {message && (
-            <div className="mb-6 p-4 bg-green-50 text-green-700 border border-green-200 rounded-lg flex items-center gap-2">
-                <div className="w-2 h-2 bg-green-500 rounded-full"></div>
-                {message}
-            </div>
-        )}
-
-        <div className="bg-white rounded-xl shadow-sm border border-slate-100 overflow-hidden">
-            <div className="p-6 border-b border-slate-100 bg-slate-50">
-                <h3 className="font-bold text-slate-800">Dados Funcionais</h3>
-            </div>
-            
-            <form onSubmit={handleSubmit} className="p-8 space-y-6">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div className="space-y-2">
-                        <label className="text-sm font-medium text-slate-700 flex items-center gap-2">
-                            <User className="w-4 h-4" /> Nome Completo
-                        </label>
-                        <input 
-                            type="text" 
-                            name="name"
-                            required
-                            value={formData.name}
-                            onChange={handleChange}
-                            className="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all"
-                            placeholder="Ex: João da Silva"
-                        />
-                    </div>
-
-                    <div className="space-y-2">
-                        <label className="text-sm font-medium text-slate-700 flex items-center gap-2">
-                            <ShieldIcon className="w-4 h-4" /> Órgão / Força
-                        </label>
-                        <select 
-                            name="force"
-                            value={formData.force}
-                            onChange={handleChange}
-                            className="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none bg-white"
-                        >
-                            {FORCES.map(f => <option key={f} value={f}>{f}</option>)}
-                        </select>
-                    </div>
-
-                    <div className="space-y-2">
-                        <label className="text-sm font-medium text-slate-700 flex items-center gap-2">
-                            <Briefcase className="w-4 h-4" /> Cargo / Patente
-                        </label>
-                        <input 
-                            type="text" 
-                            name="rank"
-                            required
-                            value={formData.rank}
-                            onChange={handleChange}
-                            disabled={isRankDisabled}
-                            className={`w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none ${isRankDisabled ? 'bg-slate-100 text-slate-500 cursor-not-allowed' : ''}`}
-                            placeholder="Ex: Agente, Soldado, Perito..."
-                        />
-                    </div>
-
-                    <div className="space-y-2">
-                        <label className="text-sm font-medium text-slate-700 flex items-center gap-2">
-                            <MapPin className="w-4 h-4" /> Lotação (Região)
-                        </label>
-                        <select 
-                            name="region"
-                            required
-                            value={formData.region}
-                            onChange={handleChange}
-                            className="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none bg-white"
-                        >
-                            <option value="">Selecione uma região</option>
-                            {REGIONS.map(r => <option key={r} value={r}>{r}</option>)}
-                        </select>
-                    </div>
-
-                    <div className="md:col-span-2 space-y-2">
-                        <label className="text-sm font-medium text-slate-700 flex items-center gap-2">
-                            <Award className="w-4 h-4" /> Especializações / Competências (CHA)
-                        </label>
-                        <input 
-                            type="text" 
-                            name="specialization"
-                            value={formData.specialization}
-                            onChange={handleChange}
-                            className="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none"
-                            placeholder="Ex: Perícia Digital, Pilotagem de Drone, Negociação de Reféns..."
-                        />
-                        <p className="text-xs text-slate-500">Separe múltiplas competências por vírgula.</p>
-                    </div>
-                </div>
-
-                <div className="pt-6 flex justify-end gap-3">
-                    <button type="button" className="px-6 py-2 border border-slate-300 text-slate-700 rounded-lg hover:bg-slate-50 font-medium transition-colors">
-                        Cancelar
-                    </button>
-                    <button type="submit" className="px-6 py-2 bg-ssp-600 text-white rounded-lg hover:bg-ssp-700 font-medium flex items-center gap-2 shadow-lg shadow-blue-500/20 transition-all">
-                        <Save className="w-4 h-4" />
-                        Salvar Registro
+    return (
+        <div className="space-y-6">
+            <div className="flex items-center justify-between">
+                <h1 className="text-2xl font-bold text-slate-800">Cadastro e Lotação</h1>
+                <div className="flex gap-2">
+                    <button className="flex items-center gap-2 px-4 py-2 bg-cbmal-600 text-white rounded-lg hover:bg-cbmal-700 transition-colors">
+                        <UserPlus className="h-4 w-4" />
+                        Novo Registro
                     </button>
                 </div>
-            </form>
+            </div>
+
+            <div className="bg-white p-6 rounded-xl shadow-sm border border-slate-200">
+                <div className="flex items-center gap-2 mb-6 text-amber-600 bg-amber-50 p-4 rounded-lg border border-amber-100">
+                    <AlertCircle className="h-5 w-5" />
+                    <p className="text-sm">
+                        Este módulo opera em modo de contingência. Os dados inseridos serão sincronizados com o BMRH na próxima janela de batch.
+                    </p>
+                </div>
+
+                <form onSubmit={handleSubmit} className="space-y-6">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div className="space-y-2">
+                            <label className="text-sm font-medium text-slate-700">Nome Completo *</label>
+                            <input
+                                type="text"
+                                name="name"
+                                value={formData.name}
+                                onChange={handleChange}
+                                className="w-full px-4 py-2 rounded-lg border border-slate-300 focus:ring-2 focus:ring-cbmal-500 focus:border-cbmal-500 outline-none transition-all"
+                                placeholder="Ex: João da Silva"
+                            />
+                        </div>
+
+                        <div className="space-y-2">
+                            <label className="text-sm font-medium text-slate-700">Matrícula / ID Funcional *</label>
+                            <input
+                                type="text"
+                                name="matricula"
+                                value={formData.matricula}
+                                onChange={handleChange}
+                                className="w-full px-4 py-2 rounded-lg border border-slate-300 focus:ring-2 focus:ring-cbmal-500 focus:border-cbmal-500 outline-none transition-all"
+                                placeholder="Ex: 123.456-7"
+                            />
+                        </div>
+
+                        <div className="space-y-2">
+                            <label className="text-sm font-medium text-slate-700">Cargo / Patente</label>
+                            <select
+                                name="cargo"
+                                value={formData.cargo}
+                                onChange={handleChange}
+                                className="w-full px-4 py-2 rounded-lg border border-slate-300 focus:ring-2 focus:ring-cbmal-500 focus:border-cbmal-500 outline-none transition-all"
+                            >
+                                <option value="">Selecione...</option>
+                                <option value="Soldado">Soldado</option>
+                                <option value="Cabo">Cabo</option>
+                                <option value="Sargento">Sargento</option>
+                                <option value="Subtenente">Subtenente</option>
+                                <option value="Oficial Junior">Tenente / Capitão</option>
+                                <option value="Oficial Superior">Major / Ten Cel / Cel</option>
+                            </select>
+                        </div>
+
+                        <div className="space-y-2">
+                            <label className="text-sm font-medium text-slate-700">Lotação Atual (Região)</label>
+                            <select
+                                name="lotacao"
+                                value={formData.lotacao}
+                                onChange={handleChange}
+                                className="w-full px-4 py-2 rounded-lg border border-slate-300 focus:ring-2 focus:ring-cbmal-500 focus:border-cbmal-500 outline-none transition-all"
+                            >
+                                <option value="">Selecione...</option>
+                                <option value="Maceió Centro">Maceió Centro</option>
+                                <option value="Tabuleiro dos Martins">Tabuleiro dos Martins</option>
+                                <option value="Benedito Bentes">Benedito Bentes</option>
+                                <option value="Arapiraca">Arapiraca</option>
+                                <option value="Palmeira dos Índios">Palmeira dos Índios</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div className="space-y-2">
+                        <label className="text-sm font-medium text-slate-700">Competências Técnicas (CHA)</label>
+                        <textarea
+                            name="competencias"
+                            value={formData.competencias}
+                            onChange={handleChange}
+                            className="w-full px-4 py-2 rounded-lg border border-slate-300 focus:ring-2 focus:ring-cbmal-500 focus:border-cbmal-500 outline-none transition-all h-24"
+                            placeholder="Descreva as competências técnicas e certificações NFPA..."
+                        />
+                        <p className="text-xs text-slate-500">Separe as competências por vírgula.</p>
+                    </div>
+
+                    <div className="flex justify-end pt-4">
+                        <button
+                            type="submit"
+                            className="flex items-center gap-2 px-6 py-2.5 bg-emerald-600 text-white font-medium rounded-lg hover:bg-emerald-700 transition-colors shadow-sm cursor-pointer"
+                        >
+                            <Save className="h-4 w-4" />
+                            Salvar Registro
+                        </button>
+                    </div>
+                </form>
+            </div>
         </div>
-    </div>
-  );
+    );
 };
 
-const ShieldIcon = ({ className }: { className?: string }) => (
-    <svg className={className} xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-);
+export default Registration;

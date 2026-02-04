@@ -44,24 +44,24 @@ export const Allocation: React.FC = () => {
       <div className="flex flex-col md:flex-row justify-between md:items-end gap-6">
         <div>
           <h2 className="text-3xl font-black text-slate-800 tracking-tight">Matriz de Alocação Estratégica</h2>
-          <p className="text-sm text-slate-500 font-medium">Correlação em tempo real entre Efetivo Policial e Criminalidade Violentamente Identificada (CVLI)</p>
+          <p className="text-sm text-slate-500 font-medium">Correlação em tempo real entre Efetivo de Bombeiros e Demanda Operacional (Ocorrências)</p>
         </div>
         <div className="flex items-center gap-3">
-          <div className="relative group bg-white shadow-sm border border-slate-200 rounded-2xl p-1 pr-3 flex items-center transition-all focus-within:ring-4 focus-within:ring-blue-500/10">
+          <div className="relative group bg-white shadow-sm border border-slate-200 rounded-2xl p-1 pr-3 flex items-center transition-all focus-within:ring-4 focus-within:ring-cbmal-500/10">
             <div className="p-2 bg-slate-50 rounded-xl mr-2">
-              <ArrowDownUp className="w-4 h-4 text-blue-600" />
+              <ArrowDownUp className="w-4 h-4 text-cbmal-600" />
             </div>
             <select
               value={sortBy}
               onChange={(e) => setSortBy(e.target.value as any)}
               className="text-xs font-black text-slate-700 bg-transparent outline-none cursor-pointer uppercase tracking-tight"
             >
-              <option value="crime">Criminalidade</option>
+              <option value="crime">Demanda Operacional</option>
               <option value="deficit">Déficit de Efetivo</option>
               <option value="name">Alfabética</option>
             </select>
           </div>
-          <button className="bg-gradient-to-r from-blue-600 to-indigo-600 text-white px-6 py-3 rounded-2xl hover:shadow-lg hover:shadow-blue-500/30 text-sm font-bold transition-all transform hover:-translate-y-0.5 active:scale-95">
+          <button className="bg-gradient-to-r from-cbmal-600 to-fire-orange text-white px-6 py-3 rounded-2xl hover:shadow-lg hover:shadow-cbmal-500/30 text-sm font-bold transition-all transform hover:-translate-y-0.5 active:scale-95">
             Exportar Inteligência
           </button>
         </div>
@@ -69,10 +69,10 @@ export const Allocation: React.FC = () => {
 
       <div className="bg-white p-8 rounded-[2rem] shadow-[0_4px_25px_-5px_rgba(0,0,0,0.05)] border border-slate-100/50">
         <div className="flex items-center gap-4 mb-8">
-          <div className="w-1.5 h-8 bg-blue-500 rounded-full shadow-[0_0_10px_rgba(59,130,246,0.5)]"></div>
+          <div className="w-1.5 h-8 bg-cbmal-500 rounded-full shadow-[0_0_10px_rgba(220,38,38,0.5)]"></div>
           <div>
-            <h3 className="text-xl font-black text-slate-800 tracking-tight">Distribuição de Forças vs. Mancha Criminal</h3>
-            <p className="text-xs text-slate-400 font-bold uppercase tracking-widest mt-1">Análise por Região Administrativa (RA)</p>
+            <h3 className="text-xl font-black text-slate-800 tracking-tight">Distribuição de Forças vs. Demanda por Socorro</h3>
+            <p className="text-xs text-slate-400 font-bold uppercase tracking-widest mt-1">Análise por Região Operacional (Alagoas)</p>
           </div>
         </div>
 
@@ -81,8 +81,8 @@ export const Allocation: React.FC = () => {
             <ComposedChart data={sortedData} margin={{ bottom: 60, top: 20 }}>
               <defs>
                 <linearGradient id="barGradient" x1="0" y1="0" x2="0" y2="1">
-                  <stop offset="0%" stopColor="#3b82f6" stopOpacity={1} />
-                  <stop offset="100%" stopColor="#2563eb" stopOpacity={0.8} />
+                  <stop offset="0%" stopColor="#DC2626" stopOpacity={1} />
+                  <stop offset="100%" stopColor="#991B1B" stopOpacity={0.8} />
                 </linearGradient>
               </defs>
               <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#f1f5f9" />
@@ -107,7 +107,7 @@ export const Allocation: React.FC = () => {
                 orientation="right"
                 axisLine={false}
                 tickLine={false}
-                tick={{ fontSize: 10, fill: '#ef4444', fontWeight: 700 }}
+                tick={{ fontSize: 10, fill: '#EA580C', fontWeight: 700 }}
               />
               <Tooltip
                 cursor={{ fill: '#f8fafc' }}
@@ -125,7 +125,7 @@ export const Allocation: React.FC = () => {
               />
               <Bar yAxisId="left" dataKey="efetivoReal" name="Efetivo Real" fill="url(#barGradient)" radius={[6, 6, 0, 0]} barSize={24} />
               <Bar yAxisId="left" dataKey="efetivoIdeal" name="Meta (Ideal)" fill="#e2e8f0" radius={[6, 6, 0, 0]} barSize={24} />
-              <Line yAxisId="right" type="monotone" dataKey="crimesViolentos" name="Taxa de CVLI" stroke="#ef4444" strokeWidth={4} dot={{ r: 4, fill: '#ef4444', strokeWidth: 2, stroke: '#fff' }} />
+              <Line yAxisId="right" type="monotone" dataKey="crimesViolentos" name="Taxa de Ocorrências" stroke="#EA580C" strokeWidth={4} dot={{ r: 4, fill: '#EA580C', strokeWidth: 2, stroke: '#fff' }} />
             </ComposedChart>
           </ResponsiveContainer>
         </div>
@@ -160,7 +160,7 @@ export const Allocation: React.FC = () => {
                         <h5 className="font-black text-sm text-slate-800 tracking-tight">{region.name}</h5>
                         <div className="flex gap-4 mt-1">
                           <span className="text-[10px] font-bold text-slate-500 uppercase tracking-tighter">Déficit: <span className={isCritical ? 'text-red-600' : 'text-amber-600'}>{deficit}</span></span>
-                          <span className="text-[10px] font-bold text-slate-500 uppercase tracking-tighter">Impacto Criminal: <span className="text-slate-800">{region.crimesViolentos}</span></span>
+                          <span className="text-[10px] font-bold text-slate-500 uppercase tracking-tighter">Demanda Operacional: <span className="text-slate-800">{region.crimesViolentos}</span></span>
                         </div>
                       </div>
                     </div>
@@ -174,26 +174,26 @@ export const Allocation: React.FC = () => {
           </div>
         </div>
 
-        <div className="bg-gradient-to-br from-blue-600 to-indigo-900 p-8 rounded-[2rem] shadow-xl shadow-blue-500/20 flex flex-col items-center text-center text-white overflow-hidden relative group">
+        <div className="bg-gradient-to-br from-cbmal-600 to-cbmal-900 p-8 rounded-[2rem] shadow-xl shadow-cbmal-500/20 flex flex-col items-center text-center text-white overflow-hidden relative group">
           <div className="absolute top-0 right-0 w-32 h-32 bg-white/10 rounded-full -mr-16 -mt-16 blur-3xl group-hover:bg-white/20 transition-all duration-700"></div>
 
           <div className="p-5 bg-white/10 backdrop-blur-md rounded-[2rem] border border-white/20 mb-6 shadow-xl relative z-10">
-            <Map className="w-12 h-12 text-blue-200" />
+            <Map className="w-12 h-12 text-cbmal-200" />
           </div>
 
           <h4 className="font-black text-xl tracking-tight mb-3 relative z-10">Redistribuição Preditiva</h4>
-          <p className="text-sm text-blue-100/80 mb-8 font-medium leading-relaxed max-w-xs relative z-10">
-            O motor de IA detectou um desvio padrão elevado entre <span className="text-white font-bold">Plano Piloto</span> e <span className="text-white font-bold">Ceilândia</span>.
+          <p className="text-sm text-cbmal-100/80 mb-8 font-medium leading-relaxed max-w-xs relative z-10">
+            O motor de IA detectou um desvio padrão elevado entre <span className="text-white font-bold">Maceió Centro</span> e <span className="text-white font-bold">Tabuleiro dos Martins</span>.
             <br /><br />
-            Otimização sugerida: <span className="bg-white/20 px-2 py-0.5 rounded text-white font-bold tracking-tight">+45 operacionais</span> para equilibrar a carga de trabalho vs. criminalidade.
+            Otimização sugerida: <span className="bg-white/20 px-2 py-0.5 rounded text-white font-bold tracking-tight">+12 operacionais</span> para equilibrar a carga de trabalho vs. demanda.
           </p>
 
           <div className="mt-auto w-full relative z-10">
-            <button className="w-full bg-white text-blue-600 font-black text-xs uppercase tracking-widest py-4 rounded-2xl hover:bg-blue-50 transition-all shadow-lg hover:shadow-white/20 transform hover:-translate-y-1">
+            <button className="w-full bg-white text-cbmal-600 font-black text-xs uppercase tracking-widest py-4 rounded-2xl hover:bg-slate-50 transition-all shadow-lg hover:shadow-white/20 transform hover:-translate-y-1">
               Simular Impacto no KPI
             </button>
             <button className="mt-3 w-full bg-transparent border border-white/30 text-white font-bold text-[10px] uppercase tracking-widest py-3 rounded-2xl hover:bg-white/5 transition-all">
-              Aprovar em Conselho
+              Aprovar em Comando
             </button>
           </div>
         </div>

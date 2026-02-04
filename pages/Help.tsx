@@ -35,11 +35,11 @@ export const Help: React.FC = () => {
     <div className="space-y-6 animate-fade-in">
       <div className="mb-8">
         <h2 className="text-2xl font-bold text-slate-800 flex items-center gap-2">
-          <HelpCircle className="w-8 h-8 text-ssp-600" />
+          <HelpCircle className="w-8 h-8 text-cbmal-600" />
           Central de Ajuda e FAQ
         </h2>
         <p className="text-slate-500">
-          Entenda como utilizar as ferramentas de inteligência do SSP-DF Strategic Dashboard.
+          Entenda como utilizar as ferramentas de inteligência do CBMAL Strategic Dashboard (Padrão NFPA 950).
         </p>
       </div>
 
@@ -51,10 +51,10 @@ export const Help: React.FC = () => {
               className="w-full px-6 py-4 flex items-center justify-between hover:bg-slate-50 transition-colors text-left"
             >
               <div className="flex items-center gap-4">
-                <div className={`p-2 rounded-lg ${openId === faq.id ? 'bg-ssp-100 text-ssp-700' : 'bg-slate-100 text-slate-500'}`}>
+                <div className={`p-2 rounded-lg ${openId === faq.id ? 'bg-cbmal-100 text-cbmal-700' : 'bg-slate-100 text-slate-500'}`}>
                   <faq.icon className="w-5 h-5" />
                 </div>
-                <span className={`font-medium ${openId === faq.id ? 'text-ssp-900' : 'text-slate-700'}`}>
+                <span className={`font-medium ${openId === faq.id ? 'text-cbmal-900' : 'text-slate-700'}`}>
                   {faq.question}
                 </span>
               </div>
@@ -66,7 +66,9 @@ export const Help: React.FC = () => {
             </button>
             {openId === faq.id && (
               <div className="px-6 py-4 pl-[4.5rem] bg-slate-50 text-slate-600 text-sm leading-relaxed border-t border-slate-100">
-                {faq.answer}
+                {faq.id === 'allocation' ?
+                  'Este módulo cruza dados do efetivo real disponível em cada Região de Alagoas com o efetivo ideal previsto baseado em demanda operacional. O objetivo é identificar desequilíbrios. Áreas com barras vermelhas baixas (pouco efetivo) e linha laranja alta (muita demanda) indicam necessidade urgente de reforço.' :
+                  faq.answer}
               </div>
             )}
           </div>
@@ -74,12 +76,12 @@ export const Help: React.FC = () => {
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8">
-        <div className="bg-blue-50 border border-blue-100 p-6 rounded-xl">
-          <h3 className="font-bold text-blue-900 mb-2">Suporte Técnico</h3>
-          <p className="text-sm text-blue-800 mb-4">
-            Encontrou algum erro nos dados ou no sistema? Entre em contato com a equipe de TI da SSP.
+        <div className="bg-cbmal-50 border border-cbmal-100 p-6 rounded-xl">
+          <h3 className="font-bold text-cbmal-900 mb-2">Suporte Técnico</h3>
+          <p className="text-sm text-cbmal-800 mb-4">
+            Encontrou algum erro nos dados ou no sistema? Entre em contato com a equipe de TI do CBMAL.
           </p>
-          <button className="text-sm font-medium text-blue-700 hover:text-blue-900 underline">
+          <button className="text-sm font-medium text-cbmal-700 hover:text-cbmal-900 underline">
             Abrir chamado técnico &rarr;
           </button>
         </div>

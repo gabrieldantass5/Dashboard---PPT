@@ -1,176 +1,182 @@
 {
-    "lastUpdate": "2026-01-01T11:10:00Z",
+    "lastUpdate": "2026-02-04T11:30:00Z",
     "kpis": {
-        "totalForce": 11721,
-        "coverage": 65,
-        "skillCoverage": 45,
-        "nextYearRetirement": 850
+        "totalForce": 1250,
+        "coverage": 88,
+        "skillCoverage": 74,
+        "nextYearRetirement": 125
     },
     "allocationData": [
         {
-            "name": "Plano Piloto",
-            "efetivoReal": 1200,
-            "efetivoIdeal": 1150,
-            "crimesViolentos": 12
-        },
-        {
-            "name": "Ceilândia",
-            "efetivoReal": 850,
-            "efetivoIdeal": 1400,
-            "crimesViolentos": 88
-        },
-        {
-            "name": "Taguatinga",
-            "efetivoReal": 600,
-            "efetivoIdeal": 750,
-            "crimesViolentos": 45
-        },
-        {
-            "name": "Samambaia",
+            "name": "Maceió Centro",
             "efetivoReal": 450,
-            "efetivoIdeal": 700,
-            "crimesViolentos": 52
+            "efetivoIdeal": 420,
+            "crimesViolentos": 8
         },
         {
-            "name": "Gama",
-            "efetivoReal": 400,
-            "efetivoIdeal": 550,
-            "crimesViolentos": 38
-        },
-        {
-            "name": "Guará",
-            "efetivoReal": 350,
+            "name": "Tabuleiro dos Martins",
+            "efetivoReal": 320,
             "efetivoIdeal": 400,
-            "crimesViolentos": 22
+            "crimesViolentos": 25
         },
         {
-            "name": "Santa Maria",
-            "efetivoReal": 380,
-            "efetivoIdeal": 600,
-            "crimesViolentos": 55
-        },
-        {
-            "name": "Águas Claras",
-            "efetivoReal": 250,
-            "efetivoIdeal": 320,
+            "name": "Benedito Bentes",
+            "efetivoReal": 280,
+            "efetivoIdeal": 350,
             "crimesViolentos": 18
         },
         {
-            "name": "Riacho Fundo I/II",
-            "efetivoReal": 280,
-            "efetivoIdeal": 450,
-            "crimesViolentos": 42
+            "name": "Arapiraca",
+            "efetivoReal": 380,
+            "efetivoIdeal": 410,
+            "crimesViolentos": 15
         },
         {
-            "name": "Sobradinho I/II",
-            "efetivoReal": 320,
-            "efetivoIdeal": 500,
-            "crimesViolentos": 35
+            "name": "Palmeira dos Índios",
+            "efetivoReal": 150,
+            "efetivoIdeal": 180,
+            "crimesViolentos": 5
+        },
+        {
+            "name": "União dos Palmares",
+            "efetivoReal": 120,
+            "efetivoIdeal": 160,
+            "crimesViolentos": 7
+        },
+        {
+            "name": "Penedo",
+            "efetivoReal": 140,
+            "efetivoIdeal": 150,
+            "crimesViolentos": 4
+        },
+        {
+            "name": "Rio Largo",
+            "efetivoReal": 110,
+            "efetivoIdeal": 160,
+            "crimesViolentos": 12
+        },
+        {
+            "name": "Delmiro Gouveia",
+            "efetivoReal": 95,
+            "efetivoIdeal": 120,
+            "crimesViolentos": 3
+        },
+        {
+            "name": "Cidade Universitária",
+            "efetivoReal": 200,
+            "efetivoIdeal": 230,
+            "crimesViolentos": 10
         }
     ],
     "competencyData": [
         {
-            "skill": "Investigação Digital",
+            "skill": "APH Avançado (NFPA 1001)",
+            "available": 120,
+            "required": 300,
+            "gap": 180
+        },
+        {
+            "skill": "Mergulho de Resgate",
             "available": 45,
-            "required": 100,
-            "gap": 55
-        },
-        {
-            "skill": "Cibersegurança",
-            "available": 30,
-            "required": 90,
-            "gap": 60
-        },
-        {
-            "skill": "Inteligência Estratégica",
-            "available": 60,
             "required": 80,
-            "gap": 20
+            "gap": 35
         },
         {
-            "skill": "Gestão de Crises",
-            "available": 75,
-            "required": 85,
-            "gap": 10
+            "skill": "Pilotagem de Aeronaves",
+            "available": 12,
+            "required": 20,
+            "gap": 8
         },
         {
-            "skill": "Análise de Dados (BI)",
-            "available": 40,
-            "required": 95,
+            "skill": "Combate a Incêndio Florestal",
+            "available": 250,
+            "required": 400,
+            "gap": 150
+        },
+        {
+            "skill": "Produtos Perigosos (HAZMAT)",
+            "available": 65,
+            "required": 120,
             "gap": 55
         },
         {
-            "skill": "Operações Especiais",
-            "available": 85,
-            "required": 90,
-            "gap": 5
+            "skill": "Resgate em Altura",
+            "available": 180,
+            "required": 250,
+            "gap": 70
+        },
+        {
+            "skill": "Comando de Incidente (ICS)",
+            "available": 90,
+            "required": 150,
+            "gap": 60
         }
     ],
     "retirementData": [
         {
             "year": "2024",
-            "projection": 520
+            "projection": 85
         },
         {
             "year": "2025",
-            "projection": 680
+            "projection": 105
         },
         {
             "year": "2026",
-            "projection": 850
+            "projection": 125
         },
         {
             "year": "2027",
-            "projection": 1100
+            "projection": 145
         },
         {
             "year": "2028",
-            "projection": 950
+            "projection": 110
         },
         {
             "year": "2029",
-            "projection": 1200
+            "projection": 130
         },
         {
             "year": "2030",
-            "projection": 1450
+            "projection": 160
         }
     ],
     "syncStatus": [
         {
-            "sys": "Portal Transparência (API)",
+            "sys": "BMRH (Recursos Humanos)",
+            "status": "Ativo",
+            "color": "bg-emerald-500",
+            "time": "5 min",
+            "icon": "👥"
+        },
+        {
+            "sys": "Fênix (Ocorrências)",
             "status": "Ativo",
             "color": "bg-emerald-500",
             "time": "12 min",
-            "icon": "⚡"
+            "icon": "🚒"
         },
         {
-            "sys": "Sinesp (Dados Nacionais)",
-            "status": "Ativo",
-            "color": "bg-emerald-500",
-            "time": "2h",
-            "icon": "🌍"
-        },
-        {
-            "sys": "SIGRH (GDF)",
+            "sys": "BMSaúde (Prontuário)",
             "status": "Sync",
-            "color": "bg-blue-500",
-            "time": "82%",
-            "icon": "⚙️"
+            "color": "bg-cbmal-500",
+            "time": "72%",
+            "icon": "🏥"
         },
         {
-            "sys": "PCDF (Estatística)",
+            "sys": "BMEaD (Capacitação)",
             "status": "Ativo",
             "color": "bg-emerald-500",
-            "time": "15 min",
-            "icon": "🔍"
+            "time": "18 min",
+            "icon": "📚"
         },
         {
-            "sys": "PMDF (Almanaque)",
+            "sys": "BMCorrege (Disciplinar)",
             "status": "Ativo",
             "color": "bg-emerald-500",
-            "time": "45 min",
-            "icon": "🛡️"
+            "time": "25 min",
+            "icon": "⚖️"
         }
     ]
 }

@@ -1,48 +1,43 @@
 import { RegionData, CompetencyGap, RetirementData } from './types';
 
-// Module 2 Data: Allocation vs Criminality
-// Dados baseados em estimativas reais de densidade populacional e incidência criminal do DF
+// Module 2 Data: Allocation vs Incident Demand
+// Dados baseados em estimativas de densidade populacional e demanda operacional de Alagoas
 export const allocationData: RegionData[] = [
-  { name: 'Ceilândia', efetivoReal: 680, efetivoIdeal: 850, crimesViolentos: 142 },
-  { name: 'Plano Piloto', efetivoReal: 1100, efetivoIdeal: 900, crimesViolentos: 28 }, // Excesso devido à Esplanada/Embaixadas
-  { name: 'Samambaia', efetivoReal: 390, efetivoIdeal: 480, crimesViolentos: 85 },
-  { name: 'Taguatinga', efetivoReal: 450, efetivoIdeal: 450, crimesViolentos: 45 },
-  { name: 'Planaltina', efetivoReal: 310, efetivoIdeal: 400, crimesViolentos: 76 },
-  { name: 'Santa Maria', efetivoReal: 260, efetivoIdeal: 320, crimesViolentos: 58 },
-  { name: 'Recanto das Emas', efetivoReal: 230, efetivoIdeal: 300, crimesViolentos: 65 },
-  { name: 'São Sebastião', efetivoReal: 190, efetivoIdeal: 240, crimesViolentos: 42 },
-  { name: 'Gama', efetivoReal: 340, efetivoIdeal: 360, crimesViolentos: 38 },
-  { name: 'Paranoá', efetivoReal: 160, efetivoIdeal: 220, crimesViolentos: 48 },
-  { name: 'Águas Claras', efetivoReal: 280, efetivoIdeal: 300, crimesViolentos: 18 },
-  { name: 'Guará', efetivoReal: 220, efetivoIdeal: 240, crimesViolentos: 22 },
-  { name: 'Sobradinho', efetivoReal: 200, efetivoIdeal: 210, crimesViolentos: 25 },
-  { name: 'Lago Norte', efetivoReal: 95, efetivoIdeal: 70, crimesViolentos: 4 },
-  { name: 'Lago Sul', efetivoReal: 140, efetivoIdeal: 100, crimesViolentos: 6 },
+  { name: 'Maceió Centro', efetivoReal: 180, efetivoIdeal: 220, crimesViolentos: 85 },
+  { name: 'Tabuleiro dos Martins', efetivoReal: 95, efetivoIdeal: 140, crimesViolentos: 62 },
+  { name: 'Benedito Bentes', efetivoReal: 70, efetivoIdeal: 110, crimesViolentos: 48 },
+  { name: 'Cidade Universitária', efetivoReal: 85, efetivoIdeal: 90, crimesViolentos: 22 },
+  { name: 'Arapiraca', efetivoReal: 120, efetivoIdeal: 130, crimesViolentos: 38 },
+  { name: 'Palmeira dos Índios', efetivoReal: 55, efetivoIdeal: 70, crimesViolentos: 18 },
+  { name: 'União dos Palmares', efetivoReal: 48, efetivoIdeal: 65, crimesViolentos: 15 },
+  { name: 'Penedo', efetivoReal: 42, efetivoIdeal: 55, crimesViolentos: 12 },
+  { name: 'Rio Largo', efetivoReal: 38, efetivoIdeal: 50, crimesViolentos: 14 },
+  { name: 'Delmiro Gouveia', efetivoReal: 35, efetivoIdeal: 45, crimesViolentos: 10 },
 ];
 
-// Module 3 Data: Competency Gaps
-// Baseado em tendências de modernização policial
+// Module 3 Data: Competency Gaps (NFPA 950 Aligned)
+// Baseado em padrões NFPA e necessidades de bombeiros militares
 export const competencyData: CompetencyGap[] = [
-  { skill: 'Perícia Digital Forense', required: 450, available: 180, gap: 270 },
-  { skill: 'Análise de Inteligência', required: 300, available: 210, gap: 90 },
-  { skill: 'Gestão de Crises', required: 200, available: 190, gap: 10 },
-  { skill: 'Investigação Financeira', required: 350, available: 120, gap: 230 },
-  { skill: 'Policiamento Comunitário', required: 800, available: 750, gap: 50 },
-  { skill: 'Cibersegurança', required: 250, available: 60, gap: 190 },
-  { skill: 'Pilotagem de Drones', required: 100, available: 45, gap: 55 },
+  { skill: 'APH Avançado (NFPA 1001)', required: 280, available: 165, gap: 115 },
+  { skill: 'Mergulho de Resgate', required: 45, available: 28, gap: 17 },
+  { skill: 'Pilotagem de Aeronaves', required: 18, available: 12, gap: 6 },
+  { skill: 'Combate a Incêndio Florestal', required: 220, available: 180, gap: 40 },
+  { skill: 'Produtos Perigosos (HAZMAT)', required: 150, available: 95, gap: 55 },
+  { skill: 'Resgate em Altura', required: 180, available: 140, gap: 40 },
+  { skill: 'Comando de Incidente (ICS)', required: 95, available: 62, gap: 33 },
 ];
 
 // Module 4 Data: Organizational Memory / Retirement Forecast
-// Projeção típica de ciclo de concursos (pico em 5 anos)
+// Projeção típica de ciclo de concursos CBMAL
 export const retirementData: RetirementData[] = [
-  { year: 2024, projection: 450 },
-  { year: 2025, projection: 620 },
-  { year: 2026, projection: 890 }, // Pico previsto (Turmas de 90/95)
-  { year: 2027, projection: 750 },
-  { year: 2028, projection: 540 },
-  { year: 2029, projection: 480 },
-  { year: 2030, projection: 410 },
+  { year: 2024, projection: 85 },
+  { year: 2025, projection: 110 },
+  { year: 2026, projection: 145 }, // Pico previsto
+  { year: 2027, projection: 120 },
+  { year: 2028, projection: 95 },
+  { year: 2029, projection: 78 },
+  { year: 2030, projection: 65 },
 ];
 
-export const FORCES = ['PMDF', 'PCDF', 'CBMDF', 'DETRAN-DF', 'SSP-DF'];
+export const FORCES = ['CBMAL'];
 export const REGIONS = allocationData.map(r => r.name).sort();
