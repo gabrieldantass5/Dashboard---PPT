@@ -4,6 +4,8 @@
 
 Este repositório contém a **Prova de Conceito (PoC)** de alta fidelidade do Dashboard Estratégico do **Corpo de Bombeiros Militar de Alagoas (CBMAL)**. O sistema é a materialização tecnológica de uma proposta de Política Institucional de People Analytics, desenvolvida para transformar a gestão de capital humano em segurança pública através de dados e evidências.
 
+🌐 **Acesse a Demonstração Online:** [https://gabrieldantass5.github.io/Dashboard---PPT/](https://gabrieldantass5.github.io/Dashboard---PPT/)
+
 ## 🌟 Destaques do Projeto
 
 1. **Visão Médica e Operacional**: Monitoramento integrado de KPIs de saúde (Absenteísmo, Burnout, ECO) cruzados com dados de prontidão e escalas de serviço.
