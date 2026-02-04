@@ -73,5 +73,4 @@ O objetivo principal deste PTT é propor uma **Política Institucional de People
 
 ---
 
-**CBMAL - Gestão Estratégica baseada em Dados.**  
-*Brasília, 2026.*
+**Gestão Estratégica baseada em Dados.**  
