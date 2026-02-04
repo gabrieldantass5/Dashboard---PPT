@@ -6,13 +6,12 @@ Este repositório contém a **Prova de Conceito (PoC)** de alta fidelidade do Da
 
 ## 🎓 Contexto Acadêmico
 
-Este projeto é fruto da produção técnica do **Mestrado Profissional em Administração Pública (MPA)**, sob a égide das seguintes instituições:
+Este projeto é fruto da produção técnica do **MBA em Gestão e Governança em Segurança Pública**, sob a égide das seguintes instituições:
 
 * **Universidade de Brasília (UnB)**
 * **Faculdade de Economia, Administração, Contabilidade e Gestão de Políticas Públicas (FACE)**
 * **Departamento de Administração (ADM)**
 * **Programa de Pós-Graduação em Administração (PPGA)**
-* **MBA em Gestão e Governança em Segurança Pública**
 
 ---
 
