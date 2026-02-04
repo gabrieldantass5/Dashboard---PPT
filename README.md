@@ -19,7 +19,7 @@ Este projeto é fruto da produção técnica do **MBA em Gestão e Governança e
 
 ## 👥 Autores
 
-Este projeto foi desenvolvido de forma colaborativa pelos mestrandos:
+Este projeto foi desenvolvido de forma colaborativa pelos autores:
 
 * **Carlos Eduardo Oliveira**
 * **Izabela Fernanda Ferreira da Moura Castro**
