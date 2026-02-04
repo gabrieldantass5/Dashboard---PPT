@@ -1,3 +1,5 @@
+![CBMAL People Analytics Dashboard](assets/banner.png)
+
 # 🚒 CBMAL Strategic Dashboard - People Analytics
 
 Este repositório contém a **Prova de Conceito (PoC)** de alta fidelidade do Dashboard de People Analytics, desenvolvido como parte integrante de um **Produto Técnico-Tecnológico (PTT)** para o Corpo de Bombeiros Militar de Alagoas.
