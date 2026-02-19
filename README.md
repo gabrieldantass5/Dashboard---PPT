@@ -24,7 +24,7 @@ Este produto é o resultado prático do **Produto Técnico-Tecnológico (PTT)** 
 * **Izabela Fernanda Ferreira da Moura Castro**
 * **Gabriel Dantas da Cruz**
 
-**Orientadora:** Profa. Dra. Marina Figueiredo Moreira
+**Orientadora:** Prof. Dr. Thiago Gomes Nascimento
 
 ---
 
